@@ -1,11 +1,24 @@
 Rails.application.routes.draw do
+  root to:'home#index'
+  
+
+  resources :users
+
+  get 'signup' => 'users#create'
+  get 'list' => 'users#index'
+
+  resources :sessions
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  get 'logout' => 'sessions#destroy'
   get 'home/index'
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'home#index'
+ 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -7,12 +7,11 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email])
     if user
-      @user = user
-      session[:user_id] = user
-      respond_to do |format|
+      session[:user_id] = user.id 
 
-        format.html { redirect_to :controller => 'home', :action => 'index', session[:user_id] => user}
-      end
+
+      redirect_to root_url
+      
     else
       render "new"
 

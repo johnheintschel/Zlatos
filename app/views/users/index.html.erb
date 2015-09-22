@@ -27,7 +27,14 @@
 </table>
 
 <br>
+<% if session[:user_id] == nil %>
+  <%= link_to 'Sign up', new_user_path %>
+  <%= link_to 'Log In',  login_path %>
+<% else %>
+  <h2>You are logged in as 
+    *placeholder*
+  </h2>
+  <%= link_to 'Log out?', logout_path(@session) %>
+<% end %>
 
-<%= link_to 'New User', new_user_path %>
-<%= link_to 'Log In', new_session_path %>
 <%= link_to 'Home', root_path %>

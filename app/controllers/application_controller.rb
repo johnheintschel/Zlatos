@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :require_user
 
   def current_user
-    if @current_user.nil? and !session[:user_id].nil?
+    if @current_user.nil? && !session[:user_id].nil?
       @current_user = User.find(session[:user_id]) if session[:user]  
     end
   end

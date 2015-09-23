@@ -1,5 +1,5 @@
 <p id= 'notice'><%= notice %></p>
-<h1>Hello world!!</h1>
+<h1>Home</h1>
 
 <% if session[:user_id] == nil %>
   <%= link_to 'Sign up', new_user_path %>
@@ -7,7 +7,7 @@
   <%= link_to 'Users of our Site', list_path %>
 <% else %>
   <h2>You are logged in as 
-  	<%= session[:first_name] %>
+  	<%= User.find(session[:user_id]) %>
   </h2>
   <%= link_to 'Log out?', logout_path(@session) %>
   <%= link_to 'Users of our Site', list_path %>

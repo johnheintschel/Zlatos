@@ -8,9 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email])
     if user
       session[:user_id] = user.id
-      session[:user] = true
-
-
+      session[:user] = user
       redirect_to root_url
       
     else

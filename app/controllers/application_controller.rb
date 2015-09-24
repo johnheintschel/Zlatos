@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if @current_user.nil? && !session[:user_id].nil?
-      @current_user = User.find(session[:user_id]) if session[:user]  
+      @current_user = User.find(session[:user_id])   
     end
   end
   helper_method :current_user

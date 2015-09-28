@@ -2,10 +2,25 @@ Rails.application.routes.draw do
   root to:'home#index'
   
 
-  resources :users
-
+  resources :users 
   get 'signup' => 'users#create'
   get 'list' => 'users#index'
+  get 'users/:id/posts' => 'users#posts', :as => :user_posts
+
+  resources :posts do
+    resources :comments
+  end
+  post 'postcomment' => 'comments#create'
+  
+  get 'newpost' => 'posts#create'
+  get 'all' => 'posts#index'
+ 
+
+  
+  #resources :posts
+
+  #get 'newpost' => 'posts#create'
+  #get 'all' => 'posts#index'
 
   resources :sessions
   get 'login' => 'sessions#new'

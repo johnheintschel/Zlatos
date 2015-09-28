@@ -1,1 +1,6 @@
 My choice for the tech event is The UX Lab NYC's Media Lab Summit happening on Friday, September 25th at the NYU Skirball Center. 
+
+My schema has three models, user, post, and comment. 
+User has many_comments and has_many posts, and has the attributes first_name, last_name, username, and email. 
+Post has many_comments, and belongs_to user, and has the attributes title, text, and score. 
+Comment belongs_to user and belongs_to post, and has the attributes username, text, and score. 

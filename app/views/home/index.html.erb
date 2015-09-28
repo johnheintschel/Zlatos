@@ -1,14 +1,20 @@
 <p id= 'notice'><%= notice %></p>
 <h1>Home</h1>
+  <body> 
+  <br>
+  
+
+  </body>
 <% if current_user.nil? %>
   <%= link_to 'Sign up', new_user_path %>
   <%= link_to 'Log In',  login_path %>
   <%= link_to 'Users of our Site', list_path %>
 <% else %>
   <h2>You are logged in as 
-  	<%= session[:user]['first_name'] %>
+  	<%= session[:user]['username'] %>
   </h2>
   <%= link_to 'Log out?', logout_path %>
   <%= link_to 'Users of our Site', list_path %>
+  <%= link_to 'Posts', all_path %>
 <% end %>
 

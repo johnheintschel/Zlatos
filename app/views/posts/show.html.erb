@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @post.text %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @post.score %>
+</p>
+<p>
+  <strong>Created by:</strong>
+  <%= User.find_by(id: @post.user_id).first_name %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', all_path %>
+<%= link_to 'Comments', post_comments_path(@post) %>

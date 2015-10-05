@@ -7,7 +7,6 @@ namespace :hotelData do
    				:header_converters=> lambda {|f| f.strip},
    				:converters=> lambda {|f| f ? f.strip : nil})
 			@hotels.each do |row|
-				puts row
 				Hotel.create!(row.to_hash)
 			end
 		end

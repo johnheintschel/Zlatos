@@ -1,9 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Users of Zlatos :)</h1>
 <br>
 <body> 
-
 <br>
 <br>
 </body>
@@ -17,7 +14,6 @@
       <th colspan="4"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @users.each do |user| %>
       <tr>
@@ -33,18 +29,5 @@
     <% end %>
   </tbody>
 </table>
-
-
 <br>
-<% if @current_user.nil? %>
-  <%= link_to 'Sign up', new_user_path %>
-  <%= link_to 'Log In',  login_path %>
-<% else %>
-  <h2>You are logged in as 
-    <%= session[:user]['username'] %>
-  </h2>
-  <%= link_to 'Log out?', logout_path %>
-
-<% end %>
-
 <%= link_to 'Home', root_path %>

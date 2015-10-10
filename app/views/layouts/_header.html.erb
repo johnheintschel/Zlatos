@@ -1,0 +1,11 @@
+<% if @current_user.nil? %>
+  <%= link_to 'Sign up', new_user_path %>
+  <%= link_to 'Log In',  login_path %>
+  <%= link_to 'Users of our Site', list_path %>
+<% else %>
+  Hello <%= @current_user.username%>
+  <%= link_to 'Log out?', logout_path %>
+  <%= link_to 'Users of our Site', list_path %>
+  <%= link_to 'Posts', all_path %>
+<% end %>
+<%= link_to 'Home', root_path %>

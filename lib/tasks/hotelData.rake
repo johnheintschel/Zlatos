@@ -10,5 +10,4 @@ namespace :hotelData do
 				Hotel.create!(row.to_hash)
 			end
 		end
-
 end

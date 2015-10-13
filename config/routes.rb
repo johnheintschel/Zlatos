@@ -11,9 +11,9 @@ Rails.application.routes.draw do
     resources :comments
   end
   post 'postcomment' => 'comments#create'
-  
-  get 'newpost' => 'posts#create'
+  get 'newpost' => 'posts#new'
   get 'all' => 'posts#index'
+  post 'all' => 'posts#index'
  
 
   

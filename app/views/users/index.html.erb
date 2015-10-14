@@ -7,18 +7,14 @@
 <table>
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
       <th>Email</th>
       <th>Username</th>
-      <th colspan="4"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
         <td><%= user.email %></td>
         <td><%= user.username %></td>
         <td><%= link_to 'Show', user %></td>

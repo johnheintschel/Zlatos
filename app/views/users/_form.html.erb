@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= simple_form_for(@user, html: { class: 'form-vertical' }) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,22 +10,10 @@
       </ul>
     </div>
   <% end %>
-  <div class='field'>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class='field'>
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </div>
-  <div class='field'>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class='field'>
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <%= f.input :username, placeholder: 'Enter username' %>
+  <%= f.input :email, placeholder: 'Enter email' %>
+  <%= f.input :password, :label => 'Password',:placeholder => 'Password' %>
+  <%= f.input :password_confirmation, :label => 'Confirm', placeholder: 'Confirm Password' %>
+  <%= f.button :submit %>
+  <% end %>
+  

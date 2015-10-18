@@ -1,11 +1,23 @@
-<% if @current_user.nil? %>
-  <%= link_to 'Sign up', new_user_path %>
-  <%= link_to 'Log In',  login_path %>
-  <%= link_to 'Users of our Site', list_path %>
-<% else %>
-  Hello <%= @current_user.username%>
-  <%= link_to 'Log out?', logout_path %>
-  <%= link_to 'Users of our Site', list_path %>
-  <%= link_to 'Posts', all_path %>
-<% end %>
-<%= link_to 'Home', root_path %>
+<div class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Zlatos</a>
+    </div>
+    <% if @current_user.nil? %>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/users/new/">Sign up</a></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/login">Log in</a></li>
+    </ul>
+    <% else %>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/list">Users</a></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/all">Posts</a></li>
+    </ul>
+    <p class="navbar-text pull-right">Hello <%=@current_user.username%> | <a href="/logout">Log Out</a></p>
+    <% end %>
+  </div>
+</div>

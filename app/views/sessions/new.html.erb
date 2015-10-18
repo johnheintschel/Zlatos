@@ -1,16 +1,7 @@
-<%= form_for :session, :url => login_path, :method => :post do |f| %>
-
-  <div class='field'>
-    <%= label_tag :email %><br>
-    <%= text_field_tag :email, params[:email] %>
-  </div>
-  <div class='field'>
-    <%= label_tag :password %><br>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
-    <br>
-    <%= f.submit "Log in" %>
-  </div>
-  <%= link_to 'Home', root_path %>
+<h2>Log In</h2>
+<br>
+<%= simple_form_for :session, :url => login_path, :html => { :class => 'form-vertical' }, :method => :post do |f| %>
+  <%= f.input :email, :required =>false, :label => 'Email', :placeholder => 'Email Address' %>
+  <%= f.input :password, :required =>false, :label => 'Password',:placeholder => 'Password' %>
+  <%= f.button :submit, 'Log in' %>
 <% end %>

@@ -26,10 +26,11 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
 
   	respond_to do |format|
-  		if @user.save
+  		if @user.valid?
+        @user.save
         session[:user_id] = @user.id
         flash[:success] = 'Welcome new user!'
-  			format.html { redirect_to :controller => 'home', :action => 'index'}
+  			format.html { redirect_to @user}
   			format.json { render :show, status: :created, location: @user }
   		else
   			format.html { render :new }

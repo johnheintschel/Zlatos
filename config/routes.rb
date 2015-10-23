@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#create'
   get 'list' => 'users#index'
   get 'users/:id/posts' => 'users#posts', :as => :user_posts
+  
 
   resources :posts do
     resources :comments

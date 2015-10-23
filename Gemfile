@@ -25,6 +25,8 @@ gem 'bootstrap-sass', '~> 3.3.0'
 gem 'autoprefixer-rails'
 gem 'bcrypt','~> 3.1.10', :require => 'bcrypt'
 gem 'simple_form'
+gem 'mongoid-paperclip', :require => 'mongoid_paperclip'
+gem 'aws-sdk', '~> 1.3.4'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

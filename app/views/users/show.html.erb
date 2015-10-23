@@ -1,12 +1,10 @@
+<%= image_tag @user.avatar.url(:medium), class: 'img-circle' %>
+<br>
+<br>
 <p>
-  <strong>Email:</strong>
-  <%= @user.email %>
+  <% if @user == @current_user %>
+  <strong>Your Favorite Movies:</strong>
+  <% else %>
+  <strong><%=@user.username%>'s Favorite Movies:</strong>
+  <% end %>
 </p>
-
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

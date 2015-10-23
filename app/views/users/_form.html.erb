@@ -1,4 +1,4 @@
-<%= simple_form_for(@user, html: { class: 'form-vertical' }) do |f| %>
+<%= simple_form_for(@user, html: {multipart: 'true', class: 'form-vertical' }) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+  <%= f.input :avatar, as: :file, placeholder: 'Your profile picture' %>
   <%= f.input :username, placeholder: 'Enter username' %>
   <%= f.input :email, placeholder: 'Enter email' %>
   <%= f.input :password, :label => 'Password',:placeholder => 'Password' %>

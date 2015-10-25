@@ -1,9 +1,12 @@
+<h1>Dashboard</h1>
 <%= image_tag @user.avatar.url(:medium), class: 'img-circle', size: '300x300' %>
 <br>
 <br>
 <p>
   <% if @user == @current_user %>
-  <%= button_to('Add New Movie?', newmovie_path, :class => 'btn btn-large btn-primary')%> <br><br>
+  <%= button_to('Create New Collection', newcollection_path, :class => 'btn btn-large btn-primary')%>
+  <br><br>
+  <%= button_to('Add New Movie?', newmovie_path, :class => 'btn btn-large btn-primary')%> 
   <strong>Your Favorite Movies:</strong>
   <% else %>
   <strong><%=@user.username%>'s Favorite Movies:</strong>

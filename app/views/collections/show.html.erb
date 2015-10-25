@@ -1,4 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_collection_path(@collection) %> |
-<%= link_to 'Back', collections_path %>
+<p>
+	Share this collection!
+	<br><br><br>
+  localhost:3000/collections/<%= @collection._id%>
+  <br><br><br>
+  <strong><%= @collection.title %>:</strong><br>
+</p>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

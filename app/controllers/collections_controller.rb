@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :require_user
+  skip_before_filter :require_user, only: [:show]
 
   # GET /collections
   # GET /collections.json
@@ -11,6 +11,8 @@ class CollectionsController < ApplicationController
   # GET /collections/1
   # GET /collections/1.json
   def show
+    current_user
+    @movies = @collection.movies
   end
 
   # GET /collections/new
@@ -29,7 +31,8 @@ class CollectionsController < ApplicationController
 
     respond_to do |format|
       if @collection.save
-        format.html { redirect_to @collection, notice: 'Collection was successfully created.' }
+        flash[:success] = 'Collection was successfully created.'
+        format.html { redirect_to @collection}
         format.json { render :show, status: :created, location: @collection }
       else
         format.html { render :new }
@@ -43,7 +46,8 @@ class CollectionsController < ApplicationController
   def update
     respond_to do |format|
       if @collection.update(collection_params)
-        format.html { redirect_to @collection, notice: 'Collection was successfully updated.' }
+        flash[:success] = 'Collection was successfully updated.'
+        format.html { redirect_to @collection}
         format.json { render :show, status: :ok, location: @collection }
       else
         format.html { render :edit }
@@ -57,7 +61,8 @@ class CollectionsController < ApplicationController
   def destroy
     @collection.destroy
     respond_to do |format|
-      format.html { redirect_to collections_url, notice: 'Collection was successfully destroyed.' }
+      flash[:success] = 'Collection destroyed'
+      format.html { redirect_to collections_url}
       format.json { head :no_content }
     end
   end
@@ -70,6 +75,6 @@ class CollectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def collection_params
-      params[:collection]
+      params.require(:collection).permit(:title, movie_ids: [])
     end
 end

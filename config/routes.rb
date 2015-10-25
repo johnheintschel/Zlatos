@@ -19,6 +19,10 @@ Rails.application.routes.draw do
  
 
   resources :collections
+  post 'newcollection' => 'collections#new'
+  post 'destroycollection' => 'collections#destroy'
+  get 'showcollection' => 'collections#show'
+
   resources :movies
   post 'newmovie' => 'movies#new'
   post 'destroymovie' => 'movies#destroy'

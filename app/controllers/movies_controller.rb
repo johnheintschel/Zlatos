@@ -25,6 +25,7 @@ class MoviesController < ApplicationController
   # POST /movies.json
   def create
     @movie = Movie.new(movie_params)
+    @movie.slug = @movie.title.downcase.gsub(' ','-')
     @movie.user_id = @current_user._id
     respond_to do |format|
       if @movie.save
@@ -67,11 +68,11 @@ class MoviesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
-      @movie = Movie.find(params[:id])
+      @movie = Movie.find_by(slug: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title)
+      params.require(:movie).permit(:title,:slug)
     end
 end

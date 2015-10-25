@@ -28,7 +28,7 @@ class CollectionsController < ApplicationController
   # POST /collections.json
   def create
     @collection = Collection.new(collection_params)
-
+    @collection.slug = @collection.title.downcase.gsub(' ','-')
     respond_to do |format|
       if @collection.save
         flash[:success] = 'Collection was successfully created.'
@@ -70,11 +70,11 @@ class CollectionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_collection
-      @collection = Collection.find(params[:id])
+      @collection = Collection.find_by(slug: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def collection_params
-      params.require(:collection).permit(:title, movie_ids: [])
+      params.require(:collection).permit(:title, :slug, movie_ids: [])
     end
 end

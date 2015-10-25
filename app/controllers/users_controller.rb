@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :movies, :posts]
   skip_before_filter :require_user, :only => [:new, :create, :show]
 
   def index
@@ -7,12 +7,10 @@ class UsersController < ApplicationController
   end
 
   def posts
-    @user = User.find(params[:id])
     @posts = @user.posts
   end
 
   def movies
-    @user = User.find(params[:id])
     @movies = @user.movies
   end
 
@@ -30,7 +28,7 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new(user_params)
-
+    @user.slug = @user.username.downcase.gsub(' ','-')
   	respond_to do |format|
   		if @user.valid?
         @user.save
@@ -71,11 +69,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by(slug: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :username, :password, :password_confirmation, :avatar )
+      params.require(:user).permit(:email, :slug, :username, :password, :password_confirmation, :avatar )
     end
 end

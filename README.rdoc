@@ -14,4 +14,4 @@ Explanation: The root page of the site doesn't require a log in, and it displays
 Once a user signs up or logs in, they will be directed to their own dashboard, where a profile picture is displayed if one has been uploaded.
 Users can then choose to add movies to their homepage, where they will be displayed. Once some movies have been uploaded, users will be able to create a collection from among the movies they have added.
 This collection has a title attribute, and has an association (has_and_belongs_to_many) with movies.
- The collection display page also gives the url for itself, which can be shared with friends. (You do not need to be logged in to view a collection page).
+The collection display page also gives the url for itself, which can be shared with friends. (You do not need to be logged in to view a collection page).

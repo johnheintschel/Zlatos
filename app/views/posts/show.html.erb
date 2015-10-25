@@ -14,9 +14,7 @@
 </p>
 <p>
   <strong>Created by:</strong>
-  <%= User.find_by(id: @post.user_id).first_name %>
+  <%= @user.username if @user %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', all_path %>
 <%= link_to 'Comments', post_comments_path(@post) %>

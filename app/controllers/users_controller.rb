@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :require_user, :only => [:new, :create]
+  skip_before_filter :require_user, :only => [:new, :create, :show]
 
   def index
   	@users = User.all
@@ -11,7 +11,13 @@ class UsersController < ApplicationController
     @posts = @user.posts
   end
 
+  def movies
+    @user = User.find(params[:id])
+    @movies = @user.movies
+  end
+
   def show
+    current_user
   end
 
 
@@ -53,7 +59,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    
     @user.destroy
     respond_to do |format|
       flash[:success] = 'User was successfully destroyed.'

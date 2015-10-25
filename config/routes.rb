@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root to:'home#index'
   
 
@@ -17,7 +18,10 @@ Rails.application.routes.draw do
   post 'all' => 'posts#index'
  
 
-  
+  resources :collections
+  resources :movies
+  post 'newmovie' => 'movies#new'
+  post 'destroymovie' => 'movies#destroy'
   #resources :posts
 
   #get 'newpost' => 'posts#create'

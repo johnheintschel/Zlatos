@@ -1,4 +1,5 @@
-Final Project Features Implemented:
+Final Project Commit:
+Features Implemented:
 
 Mandatory:
 -1-
